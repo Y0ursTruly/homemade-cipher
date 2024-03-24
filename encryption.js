@@ -263,11 +263,9 @@ function encrypt (key, data, ledger) {
   
   var [row1,row2] = theSplit;
   var commEncryption = matrix(key1, key2, row1, row2), thePlacer = [];
-  console.log(commEncryption)
   for(let i=0;i<commEncryption.length;i++) {
     thePlacer.push(alphaEnc(commEncryption[i], leno, key));
   }
-  console.log(thePlacer)
   for(let i=0;i<thePlacer.length;i++){
     for(let j=0;j<thePlacer[i].length;j++){
       let thePlacing = [];
@@ -317,8 +315,7 @@ function decrypt (key, data, ledger) {
    }
   }
   
-  if (commDecryption[1] === undefined) {log({temp},data.split(temp));throw new Error("Decryption FAILED")}
-  console.log("before",commDecryption,{temp})
+  if (commDecryption[1] === undefined) {throw new Error("Decryption FAILED")}
   for(let i=0;i<commDecryption.length;i++){
     commDecryption[i] = alphaDec(commDecryption[i], lepo, key);
   }
